@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">My App</string>
+    <string name="title_activity_main_composable">MainActivityComposable</string>
+    <string name="again_click_me">Hit My Head, Again</string>
+    <string name="todo">TODO</string>
+    <string name="enter_account_name">Enter account name</string>
+    <string name="enter_your_balance">Enter your balance</string>
+    <string name="enter_type">Enter type</string>
+    <string name="savings">Savings</string>
+    <string name="checking">Checking</string>
+</resources>
