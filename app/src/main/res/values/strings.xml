@@ -7,6 +7,7 @@
     <string name="enter_your_balance">Enter your balance</string>
     <string name="enter_your_account_number">Enter your Account Number</string>
     <string name="enter_type">Enter type</string>
+    <string name="dialog_message">Enter type</string>
     <string name="savings">Savings</string>
     <string name="checking">Checking</string>
     <string name="account_name">Account Name</string>
@@ -15,4 +16,6 @@
     <string name="total_balance">Total Balance</string>
     <string name="interest_rate">Interest Rate</string>
     <string name="service_charge">Service Charge</string>
+    <string name="deposit">Deposit</string>
+    <string name="withdraw">Withdraw</string>
 </resources>
