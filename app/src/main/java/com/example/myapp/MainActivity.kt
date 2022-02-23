@@ -1,10 +1,11 @@
 package com.example.myapp
 
-import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import android.text.InputType
 import android.view.View
 import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapp.bank.CheckingAccount
 import com.example.myapp.bank.SavingAccount
@@ -47,13 +48,10 @@ class MainActivity : AppCompatActivity() {
             }
             1 -> {
                 binding.rowServiceCharge.text = CheckingAccount.serviceCharge.toString()
-                binding.rowAccountType.text = BankUtils.CHECKINGS
+                binding.rowAccountType.text = BankUtils.CHECKING
             }
         }
     }
-
-
-
 
 
     fun depositAmount(view: View) {
@@ -64,35 +62,62 @@ class MainActivity : AppCompatActivity() {
         // Set up the input
         val input = EditText(this)
 
-        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        val builder: androidx.appcompat.app.AlertDialog.Builder =
+            androidx.appcompat.app.AlertDialog.Builder(this)
         builder.setTitle("Deposit")
 
 // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
         builder.setMessage("Enter Amount")
         input.inputType = InputType.TYPE_CLASS_NUMBER
         builder.setView(input)
+
 // Set up the buttons
         builder.setPositiveButton(
             "Deposit"
         ) { dialogInterface, i ->
             val amount: Double = input.text.toString().toDouble()
-            depositNewAmount(amount)
+
+            val msg = bankAccount?.deposit(amount)
+
+            binding.rowAccountBalance.text = bankAccount?.accountBalance.toString()
+
+            val builder: androidx.appcompat.app.AlertDialog.Builder =
+                androidx.appcompat.app.AlertDialog.Builder(this)
+            builder.setTitle("Deposit Successful")
+            builder.setMessage(msg)
+            builder.setNegativeButton("OK", null)
+            builder.create().show()
+
         }
 
         builder.setNegativeButton("Cancel", null)
-        builder.create()?.show()
+        builder.create().show()
 
     }
 
-    private fun depositNewAmount(amount: Double) {
-        val msg = bankAccount?.deposit(amount)
-        binding.rowAccountBalance.text = bankAccount?.accountBalance.toString()
-        BankUtils.showMessage(this, msg)
-    }
 
-
+/*
     fun withdrawAmount(view: View) {
-
+        showWithDrawDialog()
     }
+
+    private fun showWithDrawDialog() {
+
+        val input = EditText(this)
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        builder.setTitle("Withdraw")
+
+        builder.setMessage("Enter Amount")
+        input.inputType = InputType.TYPE_CLASS_NUMBER
+        builder.setView(input)
+
+        builder.setPositiveButton(
+            "Withdraw"
+        ) { dialogInterface, i ->
+            val amount: Double = input.text.toString().toDouble()
+            depositNewAmount(amount)
+        }
+
+    }*/
 }
 
