@@ -1,6 +1,5 @@
 package com.example.myapp
 
-import android.content.Context
 import android.os.Bundle
 import android.text.InputType
 import android.view.View
@@ -62,29 +61,29 @@ class MainActivity : AppCompatActivity() {
         // Set up the input
         val input = EditText(this)
 
-        val builder: androidx.appcompat.app.AlertDialog.Builder =
-            androidx.appcompat.app.AlertDialog.Builder(this)
+        val builder: AlertDialog.Builder =
+            AlertDialog.Builder(this)
         builder.setTitle("Deposit")
 
-// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        // Specify the type of input expected;
         builder.setMessage("Enter Amount")
         input.inputType = InputType.TYPE_CLASS_NUMBER
         builder.setView(input)
 
-// Set up the buttons
+        // Set up the buttons
         builder.setPositiveButton(
             "Deposit"
         ) { dialogInterface, i ->
             val amount: Double = input.text.toString().toDouble()
 
-            val msg = bankAccount?.deposit(amount)
+            val amt = bankAccount?.deposit(amount)
 
             binding.rowAccountBalance.text = bankAccount?.accountBalance.toString()
 
-            val builder: androidx.appcompat.app.AlertDialog.Builder =
-                androidx.appcompat.app.AlertDialog.Builder(this)
+            val builder: AlertDialog.Builder =
+                AlertDialog.Builder(this)
             builder.setTitle("Deposit Successful")
-            builder.setMessage(msg)
+            builder.setMessage(amt)
             builder.setNegativeButton("OK", null)
             builder.create().show()
 
@@ -96,9 +95,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-/*
     fun withdrawAmount(view: View) {
         showWithDrawDialog()
+
     }
 
     private fun showWithDrawDialog() {
@@ -115,9 +114,36 @@ class MainActivity : AppCompatActivity() {
             "Withdraw"
         ) { dialogInterface, i ->
             val amount: Double = input.text.toString().toDouble()
-            depositNewAmount(amount)
+            // withdrawFromAmount(amount)
+
+            val amt = bankAccount?.withdraw(amount)
+            binding.rowAccountBalance.text = bankAccount?.accountBalance.toString()
+
+            val builder: AlertDialog.Builder =
+                AlertDialog.Builder(this)
+            builder.setTitle("Withdrawn Successfully")
+            builder.setMessage(amt)
+            builder.setNegativeButton("OK", null)
+            builder.create().show()
         }
 
+        builder.setNegativeButton("Cancel", null)
+        builder.create().show()
+
+    }
+
+    /*
+    private fun withdrawFromAmount(amount: Double) {
+        val amt = bankAccount?.withdraw(amount)
+        binding.rowAccountBalance.text = bankAccount?.accountBalance.toString()
+
+        val builder: androidx.appcompat.app.AlertDialog.Builder =
+            androidx.appcompat.app.AlertDialog.Builder(this)
+        builder.setTitle("Deposit Successful")
+        builder.setMessage(amt)
+        builder.setNegativeButton("OK", null)
+        builder.create().show()
     }*/
+
 }
 
