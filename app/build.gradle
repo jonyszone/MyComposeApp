@@ -17,6 +17,11 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        buildFeatures {
+            compose true
+            viewBinding true
+        }
     }
 
     buildTypes {
@@ -32,10 +37,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures {
-        compose true
-        viewBinding = true
-    }
+
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
     }

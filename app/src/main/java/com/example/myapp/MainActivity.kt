@@ -80,12 +80,14 @@ class MainActivity : AppCompatActivity() {
 
             binding.rowAccountBalance.text = bankAccount?.accountBalance.toString()
 
-            val builder: AlertDialog.Builder =
-                AlertDialog.Builder(this)
-            builder.setTitle("Deposit Successful")
-            builder.setMessage(amt)
-            builder.setNegativeButton("OK", null)
-            builder.create().show()
+           /* AlertDialog.Builder(this).apply {
+                setTitle("Deposit Successful")
+                setMessage(amt)
+                setNegativeButton("OK", null)
+                create().show()
+            }*/
+
+            BankUtils.showMessage(this, amt)
 
         }
 
@@ -119,31 +121,14 @@ class MainActivity : AppCompatActivity() {
             val amt = bankAccount?.withdraw(amount)
             binding.rowAccountBalance.text = bankAccount?.accountBalance.toString()
 
-            val builder: AlertDialog.Builder =
-                AlertDialog.Builder(this)
-            builder.setTitle("Withdrawn Successfully")
-            builder.setMessage(amt)
-            builder.setNegativeButton("OK", null)
-            builder.create().show()
+            BankUtils.showMessage(this, amt)
+
         }
 
         builder.setNegativeButton("Cancel", null)
         builder.create().show()
 
     }
-
-    /*
-    private fun withdrawFromAmount(amount: Double) {
-        val amt = bankAccount?.withdraw(amount)
-        binding.rowAccountBalance.text = bankAccount?.accountBalance.toString()
-
-        val builder: androidx.appcompat.app.AlertDialog.Builder =
-            androidx.appcompat.app.AlertDialog.Builder(this)
-        builder.setTitle("Deposit Successful")
-        builder.setMessage(amt)
-        builder.setNegativeButton("OK", null)
-        builder.create().show()
-    }*/
 
 }
 

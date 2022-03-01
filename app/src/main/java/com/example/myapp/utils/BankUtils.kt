@@ -11,13 +11,24 @@ object BankUtils {
     const val CHECKING = "Checking Account"
 
 
-   /*val msg =  fun(context: Context?, msg: String?): AlertDialog {
+   /*fun showMessage(context: Context?, msg: String?): AlertDialog {
         val builder: AlertDialog.Builder? = context?.let { AlertDialog.Builder(it) }
-        builder?.setTitle("Deposit Successful")
+        builder?.setTitle(msg)
         builder?.setMessage(msg)
         builder?.setNegativeButton("OK", null)
         return builder!!.create()
     }*/
+
+    fun showMessage(context: Context?, msg: String?) {
+        if (context != null) {
+            AlertDialog.Builder(context).apply {
+                //setTitle("Withdraw Successful")
+                setMessage(msg)
+                setNegativeButton("OK", null)
+                create().show()
+            }
+        }
+    }
 
 
 }
