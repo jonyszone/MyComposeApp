@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp">
         <activity
+            android:name=".hero.StartGameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".hero.MiniGameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".hero.ProgrammingHeroActivity"
+            android:exported="false" />
+        <activity
             android:name=".bank.BankingActivity"
             android:exported="false" />
         <activity

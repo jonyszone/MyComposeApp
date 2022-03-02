@@ -18,4 +18,5 @@
     <string name="service_charge">Service Charge</string>
     <string name="deposit">Deposit</string>
     <string name="withdraw">Withdraw</string>
+    <string name="start_the_game">Start The Game</string>
 </resources>

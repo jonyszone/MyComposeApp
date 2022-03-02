@@ -5,6 +5,9 @@
       <map>
         <entry key="..\:/AndroidProjects/MyApp/app/src/main/res/layout/activity_banking.xml" value="0.24615384615384617" />
         <entry key="..\:/AndroidProjects/MyApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/AndroidProjects/MyApp/app/src/main/res/layout/activity_mini_game.xml" value="0.20833333333333334" />
+        <entry key="..\:/AndroidProjects/MyApp/app/src/main/res/layout/activity_programming_hero.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/MyApp/app/src/main/res/layout/activity_start_game.xml" value="0.25" />
       </map>
     </option>
   </component>

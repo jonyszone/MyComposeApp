@@ -154,7 +154,8 @@
         android:onClick="depositAmount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout">
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
+        tools:ignore="UsingOnClickInXml">
     </Button>
 
     <Button
@@ -165,7 +166,8 @@
         android:onClick="withdrawAmount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deposit_button">
+        app:layout_constraintTop_toBottomOf="@+id/deposit_button"
+        tools:ignore="UsingOnClickInXml">
     </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
