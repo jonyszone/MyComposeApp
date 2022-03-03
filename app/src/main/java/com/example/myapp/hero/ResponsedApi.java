@@ -1,5 +1,7 @@
 
-package com.example.myapp.hero.data;
+package com.example.myapp.hero;
+
+import androidx.annotation.NonNull;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -12,6 +14,10 @@ public class ResponsedApi {
     @Expose
     private List<Question> questions = null;
 
+    public ResponsedApi(List<Question> questions) {
+        this.questions = questions;
+    }
+
     public List<Question> getQuestions() {
         return questions;
     }
@@ -20,4 +26,11 @@ public class ResponsedApi {
         this.questions = questions;
     }
 
+    @NonNull
+    @Override
+    public String toString() {
+        return "ResponsedApi{" +
+                "questions=" + questions +
+                '}';
+    }
 }

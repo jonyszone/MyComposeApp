@@ -1,23 +1,20 @@
 package com.example.myapp.hero;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.compose.ui.state.ToggleableState;
-import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapp.R;
-import com.example.myapp.hero.data.ApiService;
-import com.example.myapp.hero.data.Question;
-import com.example.myapp.hero.data.ResponsedApi;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
-
-import javax.security.auth.login.LoginException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,15 +24,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MiniGameActivity extends AppCompatActivity {
     public static final String BASE_URL = "https://herosapp.nyc3.digitaloceanspaces.com/";
-    private static final String TAG = "Retrofit failed";
+    private static final String TAG = "Retrofit call";
+
+    private QuestionAdapter questionAdapter;
+    private LinearLayoutManager linearLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mini_game);
 
-        //Intent
-       // Intent intent = getIntent();
+        //TextView fTextView = findViewById(R.id.fTextView);
+        RecyclerView recyclerView = findViewById(R.id.questionRecyclerView);
+        linearLayoutManager = new LinearLayoutManager(this);
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -44,13 +46,32 @@ public class MiniGameActivity extends AppCompatActivity {
 
         ApiService apiService = retrofit.create(ApiService.class);
 
+
         apiService.getResponse().enqueue(new Callback<ResponsedApi>() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(Call<ResponsedApi> call, Response<ResponsedApi> response) {
                 if (response.code() == 200) {
                     ResponsedApi responsedApi = response.body();
-                    List<Question> questions = responsedApi.getQuestions();
-                    Toast.makeText(MiniGameActivity.this, "" + questions.size(), Toast.LENGTH_SHORT).show();
+                   List<Question> questions = responsedApi.getQuestions();
+                   questionAdapter = new QuestionAdapter(MiniGameActivity.this, questions);
+                   recyclerView.setLayoutManager(linearLayoutManager);
+                   recyclerView.setAdapter(questionAdapter);
+
+                    //Toast.makeText(MiniGameActivity.this, "Question size " + questions.size(), Toast.LENGTH_SHORT).show();
+
+                   /* String userContent = "";
+                    userContent += "Questions Object: " + response.body().getQuestions().toString()+ "\n\n";
+
+                    fTextView.setOnClickListener(view -> {
+                        Question question = questions.get(1);
+                        Intent intent = new Intent(getApplicationContext(), QuestionDetailsActivity.class);
+                        intent.putExtra("question", question);
+                        getApplicationContext().startActivity(intent);
+                    });*/
+
+                }else {
+                   // fTextView.setText("Code: " + response.code());
                 }
             }
 

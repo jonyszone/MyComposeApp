@@ -1,4 +1,4 @@
-package com.example.myapp.hero.data;
+package com.example.myapp.hero;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

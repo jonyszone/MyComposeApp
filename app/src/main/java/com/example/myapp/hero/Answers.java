@@ -1,9 +1,14 @@
 
-package com.example.myapp.hero.data;
+package com.example.myapp.hero;
+
+import androidx.annotation.NonNull;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-public class Answers {
+
+import java.io.Serializable;
+
+public class Answers implements Serializable {
 
     @SerializedName("A")
     @Expose
@@ -17,6 +22,13 @@ public class Answers {
     @SerializedName("D")
     @Expose
     private String d;
+
+    public Answers(String a, String b, String c, String d) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
+    }
 
     public String getA() {
         return a;
@@ -50,4 +62,14 @@ public class Answers {
         this.d = d;
     }
 
+    @NonNull
+    @Override
+    public String toString() {
+        return "Answers{" +
+                "a='" + a + '\'' +
+                ", b='" + b + '\'' +
+                ", c='" + c + '\'' +
+                ", d='" + d + '\'' +
+                '}';
+    }
 }

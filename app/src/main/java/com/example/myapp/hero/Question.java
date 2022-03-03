@@ -1,10 +1,14 @@
 
-package com.example.myapp.hero.data;
+package com.example.myapp.hero;
+
+import androidx.annotation.NonNull;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Question {
+import java.io.Serializable;
+
+public class Question implements Serializable {
 
     @SerializedName("question")
     @Expose
@@ -21,6 +25,14 @@ public class Question {
     @SerializedName("score")
     @Expose
     private Integer score;
+
+    public Question(String question, Answers answers, String questionImageUrl, String correctAnswer, Integer score) {
+        this.question = question;
+        this.answers = answers;
+        this.questionImageUrl = questionImageUrl;
+        this.correctAnswer = correctAnswer;
+        this.score = score;
+    }
 
     public String getQuestion() {
         return question;
@@ -62,4 +74,16 @@ public class Question {
         this.score = score;
     }
 
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Question{" +
+                "question='" + question + '\'' +
+                ", answers=" + answers +
+                ", questionImageUrl='" + questionImageUrl + '\'' +
+                ", correctAnswer='" + correctAnswer + '\'' +
+                ", score=" + score +
+                '}';
+    }
 }
