@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -30,25 +31,25 @@ import com.example.myapp.bank.BankingActivity
 import com.example.myapp.hero.MiniGameActivity
 import com.example.myapp.hero.ProgrammingHeroActivity
 import com.example.myapp.hero.StartGameActivity
+import com.example.myapp.ui.theme.MyAppTheme
 
 class MainActivityComposable : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-           // MainContent()
+            MainContent()
             Greeting(firstName = "MY", lastName = "HEAD")
         }
     }
 
 
-/*
     @Composable
     private fun MainContent() {
         MyAppTheme {
             Greeting(firstName = "My", lastName = "Head")
         }
     }
-}*/
+}
 
 
 @Composable
@@ -93,13 +94,12 @@ fun Greeting(firstName: String, lastName: String) {
         }
     }
 
-}}
+}
 
-/*
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     MyAppTheme {
         Greeting("My", "Studio")
     }
-}*/
+}
