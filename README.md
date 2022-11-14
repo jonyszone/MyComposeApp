@@ -34,7 +34,7 @@ Have any questions, doubts or want to present your opinions, views? You're alway
 
 See our rockstar contributors :smile:
 
-[ SEO Contributors]()
+[ Contributors]()
 
 _The beautiful UI of the application has been designed and developed by [Shafi Ul Islam ](https://github.com/jonyszone)_
 
